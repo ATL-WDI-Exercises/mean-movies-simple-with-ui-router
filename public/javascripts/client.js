@@ -1,4 +1,23 @@
-angular.module('moviesApp', []);
+angular.module('moviesApp', ['ui.router']);
+
+angular.module('moviesApp')
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+
+  $urlRouterProvider.otherwise("/home");
+  $locationProvider.html5Mode(true);
+
+  $stateProvider
+    .state('home', {
+      url: "/",
+      templateUrl: "views/home.html"
+    })
+    .state('movies', {
+      url: "/movies",
+      templateUrl: "views/movies.html",
+      controller: "moviesCtrl",
+      controllerAs: "ctrl"
+    });
+});
 
 angular.module('moviesApp')
 .controller('moviesCtrl', function($http) {
