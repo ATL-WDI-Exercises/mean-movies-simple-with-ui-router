@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body ng-app="moviesApp" ng-controller="moviesCtrl as ctrl">
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <ul>
+      <li ng-repeat="movie in ctrl.movies">{{ movie.title }} - {{ movie.year }}</li>
+    </ul>
+
+    <script type="text/javascript" src="angular/angular.min.js" defer></script>
+    <script type="text/javascript" src="javascripts/client.js" defer></script>
+  </body>
+</html>
