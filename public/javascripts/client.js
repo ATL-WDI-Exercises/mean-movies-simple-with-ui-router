@@ -17,7 +17,7 @@ angular.module('moviesApp')
       controller: "moviesCtrl",
       controllerAs: "ctrl"
     })
-    .state('movies-show', {
+    .state('moviesShow', {
       url: "/movies/:movieId",
       templateUrl: "views/movies-show.html",
       controller: "moviesShowCtrl",
@@ -26,7 +26,7 @@ angular.module('moviesApp')
 });
 
 angular.module('moviesApp')
-.controller('moviesCtrl', function($http, $state) {
+.controller('moviesCtrl', function($http) {
   console.log('moviesCtrl is alive!');
 
   var ctrl = this;
@@ -37,10 +37,6 @@ angular.module('moviesApp')
       ctrl.movies = response.data;
       console.log('ctrl.movies:', ctrl.movies);
     });
-  };
-
-  ctrl.goShowPage = function(movie) {
-    $state.go('movies-show', { movieId : movie._id } );
   };
 
   ctrl.getMovies();

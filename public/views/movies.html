@@ -2,6 +2,6 @@
 
 <ul>
   <li ng-repeat="movie in ctrl.movies">
-    <a ng-click="ctrl.goShowPage(movie)">{{ movie._id }} : {{ movie.title }} - {{ movie.year }}</a>
+    <a ui-sref="moviesShow({ movieId: movie._id })">{{ movie._id }} : {{ movie.title }} - {{ movie.year }}</a>
   </li>
 </ul>
