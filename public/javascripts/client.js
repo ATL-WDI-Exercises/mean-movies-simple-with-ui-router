@@ -16,11 +16,17 @@ angular.module('moviesApp')
       templateUrl: "views/movies.html",
       controller: "moviesCtrl",
       controllerAs: "ctrl"
+    })
+    .state('movies-show', {
+      url: "/movies/:movieId",
+      templateUrl: "views/movies-show.html",
+      controller: "moviesShowCtrl",
+      controllerAs: "ctrl"
     });
 });
 
 angular.module('moviesApp')
-.controller('moviesCtrl', function($http) {
+.controller('moviesCtrl', function($http, $state) {
   console.log('moviesCtrl is alive!');
 
   var ctrl = this;
@@ -33,5 +39,22 @@ angular.module('moviesApp')
     });
   };
 
+  ctrl.goShowPage = function(movie) {
+    $state.go('movies-show', { movieId : movie._id } );
+  };
+
   ctrl.getMovies();
 });
+
+angular.module('moviesApp')
+.controller('moviesShowCtrl', function($http, $stateParams) {
+  console.log('moviesShowCtrl is alive!');
+
+  var ctrl = this;
+  ctrl.movie = {};
+
+  $http.get('/api/movies/' + $stateParams.movieId).then(function(response) {
+    ctrl.movie = response.data;
+  });
+});
+

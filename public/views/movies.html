@@ -1,5 +1,7 @@
 <h1>Movies</h1>
 
 <ul>
-  <li ng-repeat="movie in ctrl.movies">{{ movie.title }} - {{ movie.year }}</li>
+  <li ng-repeat="movie in ctrl.movies">
+    <a ng-click="ctrl.goShowPage(movie)">{{ movie._id }} : {{ movie.title }} - {{ movie.year }}</a>
+  </li>
 </ul>
